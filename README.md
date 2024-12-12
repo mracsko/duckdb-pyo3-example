@@ -63,6 +63,10 @@ References for the implemented example Python package in Rust with Pyo3.
 - [DuckDB Rust API](https://duckdb.org/docs/api/rust.html): DuckDB Rust API documentation.
 - [DuckDB Appender](https://duckdb.org/docs/data/appender.html): DuckDB Appender documentation.
 - [Rust duckdb crate Struct Appender](https://docs.rs/duckdb/latest/duckdb/struct.Appender.html): DuckDB Appender Rust API documentation.
+- Apache Arrow And Polars documentation:
+  - [Apache Arrow IPC](https://arrow.apache.org/docs/python/ipc.html)
+  - [Polars IPC](https://docs.rs/polars-io/latest/polars_io/ipc/index.html)
+  - [Rust Arrow IPC](https://arrow.apache.org/rust/arrow_ipc/index.html)
 
 ### Windows Container
 

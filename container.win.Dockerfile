@@ -35,6 +35,7 @@ RUN vs_buildtools.exe --quiet --wait --norestart --nocache \
     --installPath C:\BuildTools \
     --add Microsoft.Component.MSBuild \
     --add Microsoft.VisualStudio.Component.Windows10SDK.18362 \
+    --add Microsoft.VisualStudio.Component.Windows11SDK.22621 \
     --add Microsoft.VisualStudio.Component.VC.Tools.x86.x64	\
  || IF "%ERRORLEVEL%"=="3010" EXIT 0
 
