@@ -1,9 +1,8 @@
-from flask import Flask, jsonify, request
+import pyarrow as pa
+import pyarrow.flight as flight
 import polars as pl
 import num2words
 from datetime import datetime, timedelta
-
-app = Flask(__name__)
 
 def gen_df(length):
     start_time = datetime(2021, 1, 1)
@@ -32,31 +31,33 @@ data_frame_xxl = gen_df(1000000)
 print("Generated: `data_frame_xxl`")
 print("Generated DataFrames...")
 
-@app.route('/data', methods=['GET'])
-def send_dataframe():
-    size = request.args.get('size')
-    match size:
-        case "xxs":
-            df = data_frame_xxs
-        case "xs":
-            df = data_frame_xs
-        case "s":
-            df = data_frame_s
-        case "m":
-            df = data_frame_m
-        case "l":
-            df = data_frame_l
-        case "xl":
-            df = data_frame_xl
-        case "xxl":
-            df = data_frame_xxl
-        case _:
-            return "Invalid size"
+class FlightServer(flight.FlightServerBase):
+    def __init__(self):
+        super().__init__("grpc://0.0.0.0:8815")
 
-    json_data = df.write_json()
+    def do_get(self, context, ticket):
+        size = ticket.ticket.decode("utf-8")
+        match size:
+            case "xxs":
+                df = data_frame_xxs
+            case "xs":
+                df = data_frame_xs
+            case "s":
+                df = data_frame_s
+            case "m":
+                df = data_frame_m
+            case "l":
+                df = data_frame_l
+            case "xl":
+                df = data_frame_xl
+            case "xxl":
+                df = data_frame_xxl
+            case _:
+                return "Invalid size"
 
-    return json_data
+        return flight.RecordBatchStream(df.to_arrow())
 
-if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=5000)
+if __name__ == "__main__":
+    server = FlightServer()
+    print("Arrow Flight Server running on port 8815...")
+    server.serve()
