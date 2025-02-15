@@ -44,6 +44,80 @@ Rust implementation:
 
 ## Results
 
-Result are collected in the `stats` folder. 
+Result are collected in the `stats` folder. Csv files are containing the detailed measurements.
 
 Once all tests are executed, run the [python script (Plot section)](python/readme.md#plot) described in the python folder to generate the updated diagrams.
+
+## Compare Mean Duration
+
+The following diagram shows the mean duration of the tests in nanoseconds on different data size. The % values are showing the difference between the two results.
+
+For example 50% on Flight means that the Flight duration is 50% of the JSON duration. Similarly, 200% on JSON means that the JSON duration is 200% of the Flight duration.
+
+### Python
+
+![Python Mean Duration](stats/python_json_vs_flight_mean_comparison.png)
+
+### Rust
+
+![Rust Mean Duration](stats/rust_json_vs_flight_mean_comparison.png)
+
+## Detailed Results - Python
+
+### xxs
+
+![Python xxs](stats/python_json_vs_flight_comparison_xxs.png)
+
+### xs
+
+![Python xs](stats/python_json_vs_flight_comparison_xs.png)
+
+### s
+
+![Python s](stats/python_json_vs_flight_comparison_s.png)
+
+### m
+
+![Python m](stats/python_json_vs_flight_comparison_m.png)
+
+### l
+
+![Python l](stats/python_json_vs_flight_comparison_l.png)
+
+### xl
+
+![Python xl](stats/python_json_vs_flight_comparison_xl.png)
+
+### xxl
+
+![Python xxl](stats/python_json_vs_flight_comparison_xxl.png)
+
+## Detailed Results - Rust
+
+### xxs
+
+![Rust xxs](stats/rust_json_vs_flight_comparison_xxs.png)
+
+### xs
+
+![Rust xs](stats/rust_json_vs_flight_comparison_xs.png)
+
+### s
+
+![Rust s](stats/rust_json_vs_flight_comparison_s.png)
+
+### m
+
+![Rust m](stats/rust_json_vs_flight_comparison_m.png)
+
+### l
+
+![Rust l](stats/rust_json_vs_flight_comparison_l.png)
+
+### xl
+
+![Rust xl](stats/rust_json_vs_flight_comparison_xl.png)
+
+### xxl
+
+![Rust xxl](stats/rust_json_vs_flight_comparison_xxl.png)

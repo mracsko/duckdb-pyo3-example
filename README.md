@@ -2,6 +2,8 @@
 
 This repository shows how to use embedded DuckDB and call it from Python, by compiling it as a python package with Pyo3 in a Rust.
 
+**Benchmark for Apache Arrow Flight and JSON communication can be found in the [benchmark/server](benchmark/server/readme.md) folder.**
+
 The repo is covering examples for:
 - Configuring a Docker Container for building Rust with Pyo3 on Windows.
 - Configuring a Docker Container for building Rust with Pyo3 on Linux (Debian).
